@@ -4,76 +4,84 @@ namespace App\Http\Controllers;
 use App\Traits\Common;
 use App\Mail\SendMail;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use App\Models\ContactUs;
 use Illuminate\Support\Facades\Mail;
 
 class mailsendController extends Controller
-{ use Common;
-     public function show()
+
+{ private $columns = ['firstName', 'lastName','message', 'email'];
+    use Common;
+    public function show(string $id)
     {
-        return view('SendMail');
+        $Message = ContactUs::findOrFail($id);
+        return view('Dashboard.showMessage',compact('Message'));
     }
-
-
-
+ 
     public function create()
+
     {
         return view('ContactUs');
     }
-    // public function send(Request $request){
-    //     $content =[
-    //         'First name'=>$request->Firstname,
-    //         'Last name'=>$request->Lastname,
-    //         'message'=>$request->message,
-    //         'email'=>$request->email,
-           
-            
-    //     ];
-        
-
-    //    Mail::to('Basma@example.com')->send(new SendMail($content ));
-        
-    //     return 'Done';
-    // }
-
-//     public function send()
-//     {
-//         $data = $request->validate([
-//             'First name'=>'required|min:3',
-//             'Last name'=>'required|min:3',
-//             'message'=>'required|min:5',
-//             'email'=>'required|email',
-//         ]);
-//    Mail::to('Basma@example.com')->send(new ContactUs($data ));
-        
-//         return dd ('sent');
-
-
-//     }
-// }
-// public function contact(){
-//     return view('ContactUs');
-// }
+  
 public function received(Request $request){
-    $content = [
-        'Firstname' => $request->Firstname,
-        'Lastname' => $request->Lastname,
-        'message' => $request->message,
-        'email' => $request->email,
-        ];
+    // return dd($request);
+    $messages= $this->messages();
+
+    $data = $request->validate([
+        'firstName'=>'required',
+        'lastName'=>'required',
+        'message'=>'required',
+        'email' => 'required',
+       
+    ], $messages);
+
+    ContactUs::create($data);
+
     Mail::to('recipient@email.com')->send( 
-        new SendMail($content),
+        new SendMail($data),
     );
     
-    return "mail sent!";
+     return "mail sent!";
+}
+public function messages(){
+    return [
+        'firstName.required'=>'firstName is required',
+        'lastName.required'=> 'lastName is required',
+        'message.required'=>'message is required',
+        'email.required'=>'email is required',
+       
+    ];
 }
 
+
+
+public function index()
+{
+   
+    $Messages = ContactUs::get();
+    // return dd($Messages);
+    return view('Messages', compact('Messages'));
+ 
 }
+
+
+public function destroy($id):RedirectResponse
+{
+    ContactUs::findOrFail($id)->delete();
+    return redirect()->route('Messages');
+} 
+}
+
+
+
+
 
 
 
 
 
    
-    
 
-   
+
+ 

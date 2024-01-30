@@ -6,7 +6,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Manage Users</h3>
+                        <h3>Update Users</h3>
                     </div>
 
                     <div class="title_right">
@@ -25,7 +25,7 @@
                     <div class="col-md-12 col-sm-12 ">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Add User</h2>
+                                <h2>Update User</h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                     </li>
@@ -45,33 +45,49 @@
                             </div>
                             <div class="x_content">
                                 <br />
-                                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-
+                                <form  action="{{ route('UpdateUser',$User->id) }}" method="post" enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                                    @csrf
+                                    @method('put')
                                     <div class="item form-group">
-                                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Full Name <span class="required">*</span>
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Full Name <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" required="required" class="form-control ">
+                                            <input type="text" id="name"   name="name" value="{{ old('name') }}"required="required" class="form-control ">
                                         </div>
+                                        @error('name')
+                                        <div class="alert alert-warning">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror 
                                     </div>
                                     <div class="item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="user-name">Username <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="user-name" name="user-name" required="required" class="form-control">
+                                            <input type="text" id="user-name" name="username" value="{{ old('username') }}"  required="required" class="form-control">
                                         </div>
+                                        @error('username')
+                                        <div class="alert alert-warning">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror 
                                     </div>
                                     <div class="item form-group">
                                         <label for="email" class="col-form-label col-md-3 col-sm-3 label-align">Email <span class="required">*</span></label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input id="email" class="form-control" type="email" name="email" required="required">
+                                            <input id="email" class="form-control" type="email" name="email"value="{{ old('email') }}" required="required">
                                         </div>
+                                        @error('email')
+                                        <div class="alert alert-warning">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
                                     </div>
                                     <div class="item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3 label-align">Active</label>
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox" class="flat">
+                                                <input type="checkbox" name="active" class="flat">
                                             </label>
                                         </div>
                                     </div>
@@ -86,7 +102,7 @@
                                     <div class="item form-group">
                                         <div class="col-md-6 col-sm-6 offset-md-3">
                                             <button class="btn btn-primary" type="button">Cancel</button>
-                                            <button type="submit" class="btn btn-success">Add</button>
+                                            <button type="submit" class="btn btn-success">Update</button>
                                         </div>
                                     </div>
 

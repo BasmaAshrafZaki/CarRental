@@ -1,10 +1,10 @@
 <x-mail::message>
 # Hello You Have Got Enquiry!
 
-<h1>First name: {{ $data['Firstname'] }}</h1>
-<h1>Last name: {{ $data['Lastname'] }}</h1>
+<h1>First name: {{ $data['firstName'] }}</h1>
+<h1>Last name: {{ $data['lastName'] }}</h1>
 <h2>Email: {{ $data['email']  }}</h2>
-<p>{{ $data['message']  }}</p>
+<p>Message: {{ $data['message']  }}</p>
 
 <x-mail::button :url="''">
 Button Text

@@ -10,6 +10,7 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,27 +23,7 @@ use App\Http\Controllers\ContactUsController;
 */
 
 
-//send mail & creat message
-// Route::post('sendmail',[mailsendController::class,'send'])->name('sendmail');
-// Route::post('ContactUs',[mailsendController::class,'send'])->name('ContactUs.send');
 
-// Route::get('/SendMail', [mailsendController::class, 'content'])->name('SendMail');
-
-// Route::get('SendMail',[mailsendController::class, 'show'])->name('SendMail');
-//not work
-// Route::post('storeCar',[CarController::class, 'store'])->name('storeCar');
-// Route::put('/UpdateCar/{id}', [CarController::class, 'update'])->name('UpdateCar');
-//add car
-// Route::get('AddCar', [CarController::class, 'create'])->name('AddCar');
-//list of cars
-// Route::get('car-index', [CarController::class, 'index'])->middleware('verified');
-// Route::get('editCar/{id}', [CarController::class, 'edit']);
-//add Category
-// Route::get('AddCategory', [CategoryController::class, 'create'])->name('AddCategory');
-//Delete car
-// Route::get('destroy/{id}', [CarController::class, 'destroy'])->name('destroyCar');
-//Show car
-// Route::get('CarDetails/{id}', [CarController::class, 'show'])->name('CarDetails');
 
 Route::get('/', function () {
     return view('welcome');
@@ -52,9 +33,15 @@ Auth::routes(['verify'=>true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
+// ContactUs
 Route::get('/ContactUs', [mailsendController::class, 'create'])->name('ContactUs');
 Route::post('receiveContact',[mailsendController::class, 'received'])->name('receiveContact');
+Route::post('',[mailsendController::class, 'show'])->name('');
 Route::get('logout',[LoginController::class, 'logout'])->name('logout');
+
+
+
 
 Route::group(['prefix' => 'Dashboard','middleware' => ['verified']], function () {
     Route::group(
@@ -90,11 +77,22 @@ Route::group(['prefix' => 'Dashboard','middleware' => ['verified']], function ()
     });
     Route::group(
         ['prefix' => 'Messages',], function () {
-        Route::get('Messages', [ContactUsController::class, 'index'])->name('Messages');
-        Route::post('storeMessages',[ContactUsController::class, 'store'])->name('storeMessages');
-        Route::get('/showMessage/{id}', [ContactUsController::class, 'show'])->name('showMessage');
-        Route::get('deleteMessages/{id}', [ContactUsController::class, 'destroy'])->name('deleteMessages');
+        Route::get('Messages', [mailsendController::class, 'index'])->name('Messages');
+        Route::get('/showMessage/{id}', [mailsendController::class, 'show'])->name('showMessage');
+        Route::get('deleteMessages/{id}', [mailsendController::class, 'destroy'])->name('deleteMessages');
     });
+    Route::group(
+        ['prefix' => 'Users',], function () {
+        Route::get('Users', [UserController::class, 'index'])->name('Users');
+        Route::get('AddUser', [UserController::class, 'create'])->name('AddUser');
+        Route::post('storeUser',[UserController::class, 'store'])->name('storeUser');
+        Route::get('UserDetails/{id}', [UserController::class, 'show'])->name('UserDetails');
+        Route::get('editUser/{id}', [UserController::class, 'edit'])->name('editUser');
+        Route::put('/UpdateUser/{id}', [UserController::class, 'update'])->name('UpdateUser');
+        Route::get('deleteUser/{id}', [UserController::class, 'destroy'])->name('deleteUser');
+    });
+
+
 });
 
 

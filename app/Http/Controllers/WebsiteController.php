@@ -23,7 +23,9 @@ class WebsiteController extends Controller
     }
     public function listing()
     {
-        return view('Website.listing');
+        $cars = Car::get();
+        return view('Website.listing',compact('cars'));
+      
     }
     public function single()
 
@@ -33,7 +35,9 @@ class WebsiteController extends Controller
     }
     public function testimonials()
     {
-        return view('Website.testimonials');
+        $testimonial = Testimonial::findOrFail($id);
+        return view('Website.testimonials',compact('testimonial'));
+      
     }
     public function about()
     {

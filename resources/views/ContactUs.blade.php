@@ -106,10 +106,10 @@
               @csrf
               <div class="form-group row">
                 <div class="col-md-6 mb-4 mb-lg-0">
-                  <input type="text" class="form-control" name="Firstname" placeholder="First name">
+                  <input type="text" class="form-control" name="firstName" placeholder="First name">
                 </div>
                 <div class="col-md-6">
-                  <input type="text" class="form-control" name="Lastname" placeholder="Last name">
+                  <input type="text" class="form-control" name="lastName" placeholder="Last name">
                 </div>
               </div>
 

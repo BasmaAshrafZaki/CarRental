@@ -16,9 +16,9 @@ class ContactUsController extends Controller
      */
     public function index()
     {
-        $Messages = Message::get();
+        $ContactUss = ContactUs::get();
 
-        return view('Messages', compact('Messages'));
+        return view('ContactUss', compact('ContactUss'));
      
     }
 
@@ -45,7 +45,7 @@ class ContactUsController extends Controller
            
         ], $messages);
 
-        messages:create($data);
+        ContactUs:create($data);
        
         return 'done';
     }
@@ -54,8 +54,8 @@ class ContactUsController extends Controller
      */
     public function show(string $id)
     {
-        $messages = Messages::findOrFail($id);
-        return view('Dashboard.showMessage',compact('messages'));
+        $ContactUss = ContactUs::findOrFail($id);
+        return view('Dashboard.showMessage',compact('ContactUss'));
     }
 
     /**
@@ -79,7 +79,7 @@ class ContactUsController extends Controller
      */
     public function destroy($id):RedirectResponse
     {
-        Messages::findOrFail($id)->delete();
-        return redirect()->route('Messages');
+        ContactUss::findOrFail($id)->delete();
+        return redirect()->route('ContactUss');
     }
 }

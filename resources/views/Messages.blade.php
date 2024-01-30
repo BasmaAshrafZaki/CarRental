@@ -59,9 +59,9 @@
                       <tbody>
                         @foreach($Messages as $Message)        
                         <tr>
-                          <td>{{ $Message->FullName}}</td>
+                          <td>{{ $Message->firstName}} {{ $Message->lastName}}</td>
                           <td>{{ $Message->email }}</td>
-                          <td><a href="showMessage/{{ $Message->id }}">Show</a></td>
+                          <td><a href="showMessage/{{ $Message->id }}">show</a></td>
                           <td><a href="deleteMessages/{{$Message->id}}">deleteMessages</a></td>
                         </tr>
                   @endforeach  

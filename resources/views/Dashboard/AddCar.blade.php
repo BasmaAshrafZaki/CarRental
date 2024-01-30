@@ -51,7 +51,7 @@
                                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="title">Title <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" id="title"name="title" value="{{ old('title') }}" required="required" class="form-control ">
+                                        <input type="text" id="title" name="title" value="{{ old('title') }}" required="required" class="form-control ">
                                     </div> 
                                     @error('name')
                                     <div class="alert alert-warning">
