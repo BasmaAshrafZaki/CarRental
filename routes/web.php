@@ -37,7 +37,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // ContactUs
 Route::get('/ContactUs', [mailsendController::class, 'create'])->name('ContactUs');
 Route::post('receiveContact',[mailsendController::class, 'received'])->name('receiveContact');
-Route::post('',[mailsendController::class, 'show'])->name('');
+
 Route::get('logout',[LoginController::class, 'logout'])->name('logout');
 
 

@@ -83,7 +83,7 @@ class UserController extends Controller
         ], $messages);
 
         $data['active'] = isset($request->active);
-        User::create($data);
+        // User::update($data);
        
         
         User::where('id', $id)->update($data);

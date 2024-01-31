@@ -1,5 +1,5 @@
 @extends('Dashboard.layouts.parent')
-@section('title','AddCar')
+@section('title','Users')
 @section('content')
 
         <!-- page content -->

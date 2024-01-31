@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Car;
 use Illuminate\Http\RedirectResponse;
 use App\Models\Category;
+use App\Models\Testimonial;
 use App\Traits\Common; 
 use Illuminate\Http\Request;
 
@@ -33,10 +34,10 @@ class WebsiteController extends Controller
         $cars = Car::get();
         return view('Website.single',compact('cars'));
     }
-    public function testimonials()
+    public function testimonials( )
     {
-        $testimonial = Testimonial::findOrFail($id);
-        return view('Website.testimonials',compact('testimonial'));
+        $testimonials = Testimonial::get();
+        return view('Website.testimonials',compact('testimonials'));
       
     }
     public function about()

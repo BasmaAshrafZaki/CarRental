@@ -52,7 +52,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Full Name <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="name"   name="name" value="{{ old('name') }}"required="required" class="form-control ">
+                                            <input type="text" id="name"   name="name" value="{{$User->name}}"required="required" class="form-control ">
                                         </div>
                                         @error('name')
                                         <div class="alert alert-warning">
@@ -64,7 +64,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="user-name">Username <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="user-name" name="username" value="{{ old('username') }}"  required="required" class="form-control">
+                                            <input type="text" id="user-name" name="username" value="{{$User->username}}"  required="required" class="form-control">
                                         </div>
                                         @error('username')
                                         <div class="alert alert-warning">
@@ -75,7 +75,7 @@
                                     <div class="item form-group">
                                         <label for="email" class="col-form-label col-md-3 col-sm-3 label-align">Email <span class="required">*</span></label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input id="email" class="form-control" type="email" name="email"value="{{ old('email') }}" required="required">
+                                            <input id="email" class="form-control" type="email" name="email" value="{{$User->email}}" required="required">
                                         </div>
                                         @error('email')
                                         <div class="alert alert-warning">
@@ -87,7 +87,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align">Active</label>
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox" name="active" class="flat">
+                                                <input type="checkbox" name="active" class="flat" @checked($User->active)>
                                             </label>
                                         </div>
                                     </div>

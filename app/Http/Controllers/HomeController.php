@@ -23,17 +23,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-                 if(auth()->User()->is_admin == 1){
+                //  if(auth()->User()->is_admin == 1){
     
                     return view('Dashboard.index');
     
-            }
+            // }
        
        
     }
 
     
-//     {
+    
 //         if(auth()->User()->is_admin == 1){
     
 //         return redirect()->route("index");
@@ -44,5 +44,6 @@ class HomeController extends Controller
 // }
 
    
- }
+ 
 
+}

@@ -1,5 +1,5 @@
 @extends('Dashboard.layouts.parent')
-    @section('title','AddCategory')
+    @section('title','AddUser')
     @section('content')
 		<!-- page content -->
         <div class="right_col" role="main">

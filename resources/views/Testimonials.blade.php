@@ -62,7 +62,7 @@
                 @foreach($Testimonials as $testimonial)        
                       <tr>
                         <td>{{$testimonial->name }}</td>
-                        <td>{{ $testimonial->Position }}</td>
+                        <td>{{ $testimonial->position }}</td>
                         <td>
                             @if($testimonial->published)
                                 Yes

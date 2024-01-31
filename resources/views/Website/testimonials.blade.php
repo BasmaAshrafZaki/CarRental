@@ -101,21 +101,23 @@
           </div>
         </div>
         <div class="row">
+          @foreach($testimonials as $testimonial)  
           <div class="col-lg-4 mb-4">
             <div class="testimonial-2">
               <blockquote class="mb-4">
                 <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, deserunt eveniet veniam. Ipsam, nam, voluptatum"</p>
               </blockquote>
               <div class="d-flex v-card align-items-center">
-                <img src="{{asset('assets/images/person_1.jpg')}}" alt="Image" class="img-fluid mr-3">
+                <img src="{{asset('assets/images/testimonials/'.$testimonial->image)}}" alt="Image" class="img-fluid mr-3">
                 <div class="author-name">
-                  <span class="d-block">Mike Fisher</span>
-                  <span>Owner, Ford</span>
+                  <span class="d-block">{{$testimonial->name }}</span>
+                  <span>{{ $testimonial->position }}</span>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 mb-4">
+          @endforeach 
+          {{-- <div class="col-lg-4 mb-4">
             <div class="testimonial-2">
               <blockquote class="mb-4">
                 <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, deserunt eveniet veniam. Ipsam, nam, voluptatum"</p>
@@ -231,7 +233,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> --}}
 
     <div class="site-section bg-primary py-5">
       <div class="container">
