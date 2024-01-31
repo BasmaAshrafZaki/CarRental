@@ -105,7 +105,7 @@
           <div class="col-lg-4 mb-4">
             <div class="testimonial-2">
               <blockquote class="mb-4">
-                <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, deserunt eveniet veniam. Ipsam, nam, voluptatum"</p>
+                <p>{{  $testimonial->content }}</p>
               </blockquote>
               <div class="d-flex v-card align-items-center">
                 <img src="{{asset('assets/images/testimonials/'.$testimonial->image)}}" alt="Image" class="img-fluid mr-3">
