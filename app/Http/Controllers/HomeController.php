@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\User;
 class HomeController extends Controller
 {
     /**
@@ -24,8 +24,10 @@ class HomeController extends Controller
     public function index()
     {
                 //  if(auth()->User()->is_admin == 1){
-    
-                    return view('Dashboard.index');
+                    $Users = User::get();
+
+                    return view('Dashboard.index', compact('Users'));
+                    // return view('Dashboard.index');
     
             // }
        

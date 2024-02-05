@@ -33,6 +33,7 @@ Auth::routes(['verify'=>true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/website', [App\Http\Controllers\WebsiteController::class, 'index'])->name('home');
 
 // ContactUs
 Route::get('/ContactUs', [mailsendController::class, 'create'])->name('ContactUs');
@@ -102,9 +103,11 @@ Route::group(['prefix' => 'Website','middleware' => ['verified']], function () {
         ['prefix' => '',], function () {
 Route::get('/about', [WebsiteController::class, 'about'])->name('about');
 Route::get('/blog', [WebsiteController::class, 'blog'])->name('blog');
+Route::get('/contactus', [WebsiteController::class, 'ContactUs'])->name('Contact-Us');
+
 Route::get('/index', [WebsiteController::class, 'index'])->name('index');
 Route::get('/listing', [WebsiteController::class, 'listing'])->name('listing');
-Route::get('/single', [WebsiteController::class, 'single'])->name('single');
+Route::get('/single/{id}', [WebsiteController::class, 'single'])->name('single');
 Route::get('/testimonials', [WebsiteController::class, 'testimonials'])->name('testimonials');
  
    

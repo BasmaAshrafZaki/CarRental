@@ -1,5 +1,5 @@
 @extends('Dashboard.layouts.parent')
-@section('title','Users')
+@section('title','index')
 @section('content')
 
         <!-- page content -->
@@ -51,109 +51,45 @@
                     <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                       <thead>
                         <tr>
-                          <th>Registration Date</th>
-                          <th>Name</th>
-                          <th>Username</th>
-                          <th>Email</th>
-                          <th>Active</th>
-                          <th>Edit</th>
-                        </tr>
-                      </thead>
-
-
-                      <tbody>
-                        <tr>
-                          <td>1 Jan 2023</td>
-                          <td>Tony Adam</td>
-                          <td>tony2023</td>
-                          <td>tony@gmail.com</td>
-                          <td>Yes</td>
-                          <td><img src="./{{asset('assets/dashboard/images/edit.png')}}" alt="Edit"></td>
-                        </tr>
-                        <tr>
-                          <td>1 Jan 2023</td>
-                          <td>Tony Adam</td>
-                          <td>tony2023</td>
-                          <td>tony@gmail.com</td>
-                          <td>Yes</td>
-                          <td><img src="./{{asset('assets/dashboard/images/edit.png')}}" alt="Edit"></td>
-                        </tr>
-                        <tr>
-                          <td>1 Jan 2023</td>
-                          <td>Tony Adam</td>
-                          <td>tony2023</td>
-                          <td>tony@gmail.com</td>
-                          <td>Yes</td>
-                          <td><img src="./{{asset('assets/dashboard/images/edit.png')}}" alt="Edit"></td>
-                        </tr>
-                        <tr>
-                          <td>1 Jan 2023</td>
-                          <td>Tony Adam</td>
-                          <td>tony2023</td>
-                          <td>tony@gmail.com</td>
-                          <td>Yes</td>
-                          <td><img src="./{{asset('assets/dashboard/images/edit.png')}}" alt="Edit"></td>
-                        </tr>
-                        <tr>
-                          <td>1 Jan 2023</td>
-                          <td>Tony Adam</td>
-                          <td>tony2023</td>
-                          <td>tony@gmail.com</td>
-                          <td>Yes</td>
-                          <td><img src="./{{asset('assets/dashboard/images/edit.png')}}" alt="Edit"></td>
-                        </tr>
-                        <tr>
-                          <td>1 Jan 2023</td>
-                          <td>Tony Adam</td>
-                          <td>tony2023</td>
-                          <td>tony@gmail.com</td>
-                          <td>Yes</td>
-                          <td><img src="./{{asset('assets/dashboard/images/edit.png')}}" alt="Edit"></td>
-                        </tr>
-                        <tr>
-                          <td>1 Jan 2023</td>
-                          <td>Tony Adam</td>
-                          <td>tony2023</td>
-                          <td>tony@gmail.com</td>
-                          <td>Yes</td>
-                          <td><img src="./{{asset('assets/dashboard/images/edit.png')}}" alt="Edit"></td>
-                        </tr>
-                        <tr>
-                          <td>1 Jan 2023</td>
-                          <td>Tony Adam</td>
-                          <td>tony2023</td>
-                          <td>tony@gmail.com</td>
-                          <td>Yes</td>
-                          <td><img src="./{{asset('assets/dashboard/images/edit.png')}}" alt="Edit"></td>
-                        </tr>
-                        <tr>
-                          <td>1 Jan 2023</td>
-                          <td>Tony Adam</td>
-                          <td>tony2023</td>
-                          <td>tony@gmail.com</td>
-                          <td>Yes</td>
-                          <td><img src="./{{asset('assets/dashboard/images/edit.png')}}" alt="Edit"></td>
-                        </tr>
-                        <tr>
-                          <td>1 Jan 2023</td>
-                          <td>Tony Adam</td>
-                          <td>tony2023</td>
-                          <td>tony@gmail.com</td>
-                          <td>Yes</td>
-                          <td><img src="./{{asset('assets/dashboard/images/edit.png')}}" alt="Edit"></td>
-                        </tr>
                         
-                      </tbody>
-                    </table>
-                  </div>
-                  </div>
+                            <th>Registration Date</th>
+                            <th>Name</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Active</th>
+                           
+                          </tr>
+                        </thead>
+                        <tbody>
+                    @foreach($Users as $User)        
+                          <tr>
+                            <td>{{ $User->created_at }}</td>
+                            <td>{{ $User->name }}</td>
+                            <td>{{ $User->username }}</td>
+                            <td>{{ $User->email }}</td>
+                            <td>
+                                @if($User->active)
+                                    Yes
+                                @else
+                                    No
+                                @endif
+                            
+                          </tr>
+                    @endforeach     
+                        </tbody>
+                      </table>
+                    </div>
+                    </div>
+                </div>
               </div>
-            </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <!-- /page content -->
-
-        @endsection
+          <!-- /page content -->
+     
+    
+              @endsection
+    
+             

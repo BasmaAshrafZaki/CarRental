@@ -16,34 +16,42 @@ class WebsiteController extends Controller
      */
     public function index()
     {
-        return view('Website.index');
+        $recentTestimonials = Testimonial::where('published', true)->latest()->take(3)->get();
+        $recentCars = Car::where('active', 1)->latest()->take(6)->get();
+        return view('Website/pages/home',compact('recentTestimonials','recentCars'));
     }
     public function blog()
     {
-        return view('Website.blog');
+        return view('Website/pages/blog');
     }
     public function listing()
     {
         $cars = Car::get();
-        return view('Website.listing',compact('cars'));
+        $recentTestimonials = Testimonial::where('published', true)->latest()->take(3)->get();
+        return view('Website/pages/listing',compact('cars','recentTestimonials'));
       
     }
-    public function single()
+    public function single(string $id)
 
-    {
-        $cars = Car::get();
-        return view('Website.single',compact('cars'));
+    {  $car = Car::findOrFail($id);
+        $allCategories = Category::select('id', 'categoryName')->get();
+        return view('Website/pages/single',compact('car','allCategories'));
     }
     public function testimonials( )
     {
         $testimonials = Testimonial::get();
-        return view('Website.testimonials',compact('testimonials'));
+        
+        return view('Website/pages/testimonials',compact('testimonials'));
       
     }
     public function about()
     {
-        return view('Website.about');
+        return view('Website/pages/about');
     }
+    public function ContactUs()
+    {
+        return view('Website/pages/ContactUs');
+    } 
 
     
     /**
